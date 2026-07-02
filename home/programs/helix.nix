@@ -556,26 +556,26 @@ in
         "diagnostic" = "#${c10.hex}";
         "diagnostic.hint" = {
           underline = {
-            color = "#${c10.hex}";
-            style = "curl";
+            color = "#${c03.hex}";
+            style = "line";
           };
         };
         "diagnostic.info" = {
           underline = {
-            color = "#${c10.hex}";
-            style = "curl";
+            color = "#${c03.hex}";
+            style = "line";
           };
         };
         "diagnostic.warning" = {
           underline = {
-            color = "#${c10.hex}";
-            style = "curl";
+            color = "#${c03.hex}";
+            style = "line";
           };
         };
         "diagnostic.error" = {
           underline = {
-            color = "#${c10.hex}";
-            style = "curl";
+            color = "#${c03.hex}";
+            style = "line";
           };
         };
         "diagnostic.unnecessary" = "#${c04.hex}";
