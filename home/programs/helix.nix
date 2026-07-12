@@ -24,6 +24,8 @@ in
       clang-tools
       clippy
       efm-langserver
+      elmPackages.elm-format
+      elmPackages.elm-language-server
       haskell-language-server
       marksman
       nixd
@@ -115,6 +117,11 @@ in
               "--stdin-file-path=_.css"
             ];
           };
+          auto-format = true;
+        }
+        {
+          name = "elm";
+          language-servers = [ "elm-language-server" ];
           auto-format = true;
         }
         {
@@ -328,6 +335,9 @@ in
               ];
             };
           };
+        };
+        elm-language-server = {
+          command = "elm-language-server";
         };
         haskell-language-server = {
           command = "haskell-language-server-wrapper";
