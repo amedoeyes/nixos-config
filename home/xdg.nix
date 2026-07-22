@@ -27,8 +27,10 @@
     sessionVariables = {
       CARGO_HOME = "${config.xdg.dataHome}/cargo";
       DOCKER_CONFIG = "${config.xdg.configHome}/docker";
+      ELM_HOME = "${config.xdg.dataHome}/elm";
       GOPATH = "${config.xdg.dataHome}/go";
       LESSHISTFILE = "${config.xdg.stateHome}/less/history";
+      NODE_REPL_HISTORY = "${config.xdg.stateHome}/node_repl_history";
     };
   };
 
