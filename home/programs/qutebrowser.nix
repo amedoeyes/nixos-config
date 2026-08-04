@@ -33,14 +33,34 @@ in
         downloads.location.directory = config.xdg.userDirs.download;
         spellcheck.languages = [ "en-US" ];
         tabs.show = "multiple";
-        content.blocking.method = "both";
-        content.blocking.adblock.lists = [
-          "https://easylist.to/easylist/easylist.txt"
-          "https://easylist.to/easylist/easyprivacy.txt"
-          "https://secure.fanboy.co.nz/fanboy-annoyance.txt"
-          "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters.txt"
-          "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/annoyances.txt"
-        ];
+        content = {
+          blocking = {
+            method = "both";
+            adblock.lists = [
+              "https://easylist.to/easylist/easylist.txt"
+              "https://easylist.to/easylist/easyprivacy.txt"
+              "https://secure.fanboy.co.nz/fanboy-annoyance.txt"
+              "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters.txt"
+              "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/annoyances.txt"
+            ];
+          };
+          prefers_reduced_motion = true;
+          user_stylesheets =
+            let
+              stylesheet =
+                pkgs.writeText "qutebrowser-stylesheet.css"
+                  # css
+                  ''
+                    * {
+                      font-family: monospace !important;
+                      border-radius: 0 !important;
+                    }
+                  '';
+            in
+            [
+              "${stylesheet}"
+            ];
+        };
         auto_save.session = true;
         fonts = with font; {
           default_family = name;
