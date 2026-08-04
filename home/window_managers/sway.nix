@@ -62,6 +62,17 @@ in
               };
             }
           ) { } monitors;
+          workspaceOutputAssign =
+            let
+              workspacesLen = 10;
+              monitorsLen = builtins.length monitors;
+              groupSize = builtins.div (workspacesLen + monitorsLen - 1) monitorsLen;
+            in
+            lib.range 1 workspacesLen
+            |> map (x: {
+              workspace = toString x;
+              output = (builtins.elemAt monitors (builtins.div (x - 1) groupSize)).name;
+            });
           focus = {
             mouseWarping = "container";
           };
