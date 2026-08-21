@@ -23,6 +23,7 @@
                 spell
                 wl-clipboard
                 xdg-utils
+                man-pages
               ];
 
               xdg.portal.enable = lib.mkForce false;

@@ -91,6 +91,7 @@
         spell
         wl-clipboard-rs
         xdg-utils
+        man-pages
       ];
 
       programs = {
