@@ -13,6 +13,7 @@ in
       progress-color = "#${colors.c01.hex}";
       padding = 10;
       height = 500;
+      default-timeout = 5000;
       "app-name=mpris" = {
         format = "<b>%s</b>\\n%b";
         group-by = "app-name";
