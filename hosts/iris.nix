@@ -115,7 +115,7 @@
       networking = {
         hostName = "iris";
         useNetworkd = true;
-        firewall.enable = false;
+        firewall.enable = true;
         nameservers = [ "9.9.9.9" ];
         wireless = {
           enable = true;
@@ -179,11 +179,15 @@
           enable = true;
           settings = {
             CPU_SCALING_GOVERNOR_ON_AC = "performance";
-            CPU_SCALING_GOVERNOR_ON_BAT = "schedutil";
+            CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+            CPU_ENERGY_PERF_POLICY_ON_AC = "balance_performance";
+            CPU_ENERGY_PERF_POLICY_ON_BAT = "balance_power";
+            PLATFORM_PROFILE_ON_AC = "balance_performance";
+            PLATFORM_PROFILE_ON_BAT = "balance_power";
             START_CHARGE_THRESH_BAT0 = 75;
-            STOP_CHARGE_THRESH_BAT0 = 100;
+            STOP_CHARGE_THRESH_BAT0 = 80;
             START_CHARGE_THRESH_BAT1 = 75;
-            STOP_CHARGE_THRESH_BAT1 = 100;
+            STOP_CHARGE_THRESH_BAT1 = 80;
           };
         };
         udisks2.enable = true;
