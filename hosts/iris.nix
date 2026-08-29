@@ -20,10 +20,7 @@
         }
         {
           name = "DP-2";
-          resolution = {
-            width = 1366;
-            height = 768;
-          };
+          resolution = null;
           position = {
             x = 1600;
             y = 0;

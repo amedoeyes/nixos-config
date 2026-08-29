@@ -57,8 +57,10 @@ in
             acc
             // {
               "${mon.name}" = {
-                resolution = "${toString mon.resolution.width}x${toString mon.resolution.height}";
-                position = "${toString mon.position.x} ${toString mon.position.y}";
+                resolution = lib.mkIf (
+                  mon.resolution != null
+                ) "${toString mon.resolution.width}x${toString mon.resolution.height}";
+                position = lib.mkIf (mon.position != null) "${toString mon.position.x} ${toString mon.position.y}";
               };
             }
           ) { } monitors;
@@ -68,11 +70,14 @@ in
               monitorsLen = builtins.length monitors;
               groupSize = builtins.div (workspacesLen + monitorsLen - 1) monitorsLen;
             in
-            lib.range 1 workspacesLen
-            |> map (x: {
-              workspace = toString x;
-              output = (builtins.elemAt monitors (builtins.div (x - 1) groupSize)).name;
-            });
+            if monitorsLen > 0 then
+              lib.range 1 workspacesLen
+              |> map (x: {
+                workspace = toString x;
+                output = (builtins.elemAt monitors (builtins.div (x - 1) groupSize)).name;
+              })
+            else
+              [ ];
           focus = {
             mouseWarping = "container";
           };
