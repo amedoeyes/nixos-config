@@ -9,15 +9,7 @@
 {
   imports = [ host.system ];
 
-  nixpkgs.overlays = [
-    (
-      _: prev:
-      import ../pkgs {
-        inherit inputs;
-        pkgs = prev;
-      }
-    )
-  ];
+  nixpkgs.overlays = [ (_: pkgs: import ../pkgs { inherit pkgs inputs; }) ];
 
   users.users = builtins.mapAttrs (_: user: user.user { inherit pkgs; }) host.profile.users;
 

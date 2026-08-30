@@ -17,6 +17,7 @@
     ./lazygit.nix
     ./mpv.nix
     ./newsboat.nix
+    ./password-store.nix
     ./qutebrowser.nix
     ./rmpc.nix
     ./swaylock.nix
