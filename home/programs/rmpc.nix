@@ -296,7 +296,7 @@ in
             #![enable(unwrap_variant_newtypes)]
             (
                 theme: "eyes",
-                lyrics_dir: "${config.xdg.userDirs.music + "/.lyrics"}",
+                lyrics_dir: "${config.xdg.userDirs.music}",
                 cava: (
                     input: (
                         method: Fifo,
