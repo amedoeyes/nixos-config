@@ -19,6 +19,7 @@ in
         "fetchart"
         "fromfilename"
         "info"
+        "lyrics"
         "musicbrainz"
         "scrub"
         "zero"
@@ -35,6 +36,10 @@ in
       fetchart = {
         maxwidth = 1500;
         cover_format = "jpeg";
+      };
+      lyrics = {
+        synced = true;
+        sources = [ "lrclib" ];
       };
       zero = {
         keep_fields = [
