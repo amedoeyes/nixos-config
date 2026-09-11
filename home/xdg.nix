@@ -10,7 +10,7 @@
       desktop = null;
       documents = "${config.home.homeDirectory}/documents";
       download = "${config.home.homeDirectory}/downloads";
-      music = "${config.home.homeDirectory}/media/music";
+      music = "${config.home.homeDirectory}/music";
       pictures = "${config.home.homeDirectory}/media";
       publicShare = null;
       templates = null;
