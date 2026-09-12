@@ -8,10 +8,6 @@
     };
 
   home =
-    let
-      gpgKey = "0xB6B6382BFC9F2BC4";
-      gpgKeygrip = "4A76EBB0C2CEEE55FBB4F9DAD44D37F38784E5A1";
-    in
     {
       pkgs,
       lib,
@@ -19,70 +15,179 @@
       ...
     }:
     {
-      xdg.configFile."pam-gnupg".text = ''
-        ${config.xdg.dataHome}/gnupg
-        ${gpgKeygrip}
-      '';
-
       accounts = {
         email = {
-          accounts = {
-            personal = {
-              primary = true;
-              address = "amedoeyes@gmail.com";
-              realName = "Ahmed AbouEleyoun";
-              passwordCommand = "${lib.getExe pkgs.pass} passwords/email/personal";
-              flavor = "gmail.com";
-              gpg = {
-                key = gpgKey;
-                signByDefault = true;
+          accounts =
+            let
+              pass = pkgs.pass.withExtensions (_: with pkgs.passExtensions; [ pass-meta ]);
+            in
+            {
+              "ahmed@eyoun.net" = rec {
+                primary = true;
+                address = "ahmed@eyoun.net";
+                userName = "ahmed@eyoun.net";
+                realName = "Ahmed AbouEleyoun";
+                passwordCommand = "${lib.getExe pass} passwords/personal/eyoun.net";
+                imap = {
+                  host = "mail.eyoun.net";
+                  port = 993;
+                  tls.enable = true;
+                };
+                smtp = {
+                  host = "mail.eyoun.net";
+                  port = 587;
+                  tls.enable = true;
+                  tls.useStartTls = true;
+                };
+                gpg = {
+                  key = "0xBE4B8ED05504D252";
+                  signByDefault = true;
+                };
+                mbsync = {
+                  enable = true;
+                  create = "both";
+                  remove = "both";
+                  expunge = "both";
+                };
+                aerc = {
+                  enable = true;
+                  extraAccounts = {
+                    check-mail = "60s";
+                    check-mail-cmd = "${lib.getExe pkgs.isync} ${address}";
+                    check-mail-timeout = "60s";
+                  };
+                };
               };
-              mbsync = {
-                enable = true;
-                create = "both";
-                remove = "both";
-                expunge = "both";
+              "amedoeyes@gmail.com" = rec {
+                primary = false;
+                address = "amedoeyes@gmail.com";
+                realName = "Ahmed AbouEleyoun";
+                passwordCommand = "${lib.getExe pass} meta passwords/personal/google.com/amedoeyes email_password";
+                flavor = "gmail.com";
+                gpg = {
+                  key = "0xBE4B8ED05504D252";
+                  signByDefault = true;
+                };
+                mbsync = {
+                  enable = true;
+                  create = "both";
+                  remove = "both";
+                  expunge = "both";
+                };
+                aerc = {
+                  enable = true;
+                  extraAccounts = {
+                    check-mail = "60s";
+                    check-mail-cmd = "${lib.getExe pkgs.isync} ${address}";
+                    check-mail-timeout = "60s";
+                  };
+                };
               };
-              aerc = {
-                enable = true;
-                extraAccounts = {
-                  check-mail = "60s";
-                  check-mail-cmd = "${lib.getExe pkgs.isync} personal";
-                  check-mail-timeout = "60s";
+              "ahmed.m.aboueleyoun@gmail.com" = rec {
+                address = "ahmed.m.aboueleyoun@gmail.com";
+                realName = "Ahmed AbouEleyoun";
+                passwordCommand = "${lib.getExe pass} meta passwords/professional/google.com email_password";
+                flavor = "gmail.com";
+                gpg = {
+                  key = "0xBE4B8ED05504D252";
+                  signByDefault = true;
+                };
+                mbsync = {
+                  enable = true;
+                  create = "both";
+                  remove = "both";
+                  expunge = "both";
+                };
+                aerc = {
+                  enable = true;
+                  extraAccounts = {
+                    check-mail = "60s";
+                    check-mail-cmd = "${lib.getExe pkgs.isync} ${address}";
+                    check-mail-timeout = "60s";
+                  };
+                };
+              };
+              "postmaster@eyoun.net" = rec {
+                primary = false;
+                address = "postmaster@eyoun.net";
+                userName = "postmaster@eyoun.net";
+                realName = "";
+                passwordCommand = "${lib.getExe pass} passwords/personal/eyoun.net";
+                imap = {
+                  host = "mail.eyoun.net";
+                  port = 993;
+                  tls.enable = true;
+                };
+                smtp = {
+                  host = "mail.eyoun.net";
+                  port = 587;
+                  tls.enable = true;
+                  tls.useStartTls = true;
+                };
+                gpg = {
+                  key = "0xBE4B8ED05504D252";
+                  signByDefault = true;
+                };
+                mbsync = {
+                  enable = true;
+                  create = "both";
+                  remove = "both";
+                  expunge = "both";
+                };
+                aerc = {
+                  enable = true;
+                  extraAccounts = {
+                    check-mail = "60s";
+                    check-mail-cmd = "${lib.getExe pkgs.isync} ${address}";
+                    check-mail-timeout = "60s";
+                  };
+                };
+              };
+              "spam@eyoun.net" = rec {
+                primary = false;
+                address = "spam@eyoun.net";
+                userName = "spam@eyoun.net";
+                realName = "";
+                passwordCommand = "${lib.getExe pass} passwords/personal/eyoun.net";
+                imap = {
+                  host = "mail.eyoun.net";
+                  port = 993;
+                  tls.enable = true;
+                };
+                smtp = {
+                  host = "mail.eyoun.net";
+                  port = 587;
+                  tls.enable = true;
+                  tls.useStartTls = true;
+                };
+                gpg = {
+                  key = "0xBE4B8ED05504D252";
+                  signByDefault = true;
+                };
+                mbsync = {
+                  enable = true;
+                  create = "both";
+                  remove = "both";
+                  expunge = "both";
+                };
+                aerc = {
+                  enable = true;
+                  extraAccounts = {
+                    check-mail = "60s";
+                    check-mail-cmd = "${lib.getExe pkgs.isync} ${address}";
+                    check-mail-timeout = "60s";
+                  };
                 };
               };
             };
-            professional = {
-              address = "ahmed.m.aboueleyoun@gmail.com";
-              realName = "Ahmed AbouEleyoun";
-              passwordCommand = "${lib.getExe pkgs.pass} passwords/email/professional";
-              flavor = "gmail.com";
-              gpg = {
-                key = gpgKey;
-                signByDefault = true;
-              };
-              mbsync = {
-                enable = true;
-                create = "both";
-                remove = "both";
-                expunge = "both";
-              };
-              aerc = {
-                enable = true;
-                extraAccounts = {
-                  check-mail = "60s";
-                  check-mail-cmd = "${lib.getExe pkgs.isync} professional";
-                  check-mail-timeout = "60s";
-                };
-              };
-            };
-          };
         };
       };
 
       home.packages = with pkgs; [
         bc
         file
+        fzfmenu
+        man-pages
         mprisctl
         nix-index
         ripdrag
@@ -91,7 +196,6 @@
         spell
         wl-clipboard-rs
         xdg-utils
-        man-pages
       ];
 
       programs = {
@@ -110,12 +214,12 @@
           enable = true;
           settings = {
             user = {
-              email = "amedoeyes@gmail.com";
+              email = "ahmed@eyoun.net";
               name = "Ahmed AbouEleyoun";
             };
           };
           signing = {
-            key = gpgKey;
+            key = "0xBE4B8ED05504D252";
             signByDefault = true;
           };
         };
@@ -152,11 +256,10 @@
         password-store = {
           enable = true;
           settings = {
-            PASSWORD_STORE_KEY = gpgKey;
+            PASSWORD_STORE_KEY = "0xBE4B8ED05504D252";
           };
         };
         qutebrowser.enable = true;
-        ripgrep.enable = true;
         rmpc.enable = true;
         swaylock.enable = true;
         waybar.enable = true;
@@ -175,12 +278,14 @@
         gpg-agent = {
           enable = true;
           enableSshSupport = true;
-          sshKeys = [ "42E2EEB2C6DE503C9795501A4138990BDC1731C4" ];
-          extraConfig = ''
-            allow-preset-passphrase
-            default-cache-ttl 31536000
-            max-cache-ttl 31536000
-          '';
+          sshKeys = [ "854FFB39BA8E860C2AF77006410E69C81455868E" ];
+          pam = {
+            enable = true;
+            keys = [
+              "22BC4AC18F8D0A116FC1E9CBBA709D38031A9817"
+              "854FFB39BA8E860C2AF77006410E69C81455868E"
+            ];
+          };
         };
         mako.enable = true;
         swayidle.enable = true;
