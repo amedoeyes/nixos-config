@@ -118,6 +118,8 @@ in
             "${modifier}+return" = "exec ${lib.getExe pkgs.${config.home.sessionVariables.TERMINAL}}";
             "${modifier}+space" = "exec ${lib.getExe scripts.launcher}";
             "${modifier}+c" = "exec ${lib.getExe scripts.clipboard}";
+            "${modifier}+p" = "exec ${lib.getExe scripts.password}";
+            "${modifier}+o" = "exec ${lib.getExe scripts.otp}";
             "print" = "exec ${lib.getExe pkgs.screenshot}";
             "shift+print" =
               "exec ${lib.getExe pkgs.screenshot} -g \"$(${lib.getExe pkgs.slurp} -b '#${colors.c00.hex}A0' -c '#${colors.c10.hex}FF' -s '#${colors.c00.hex}00' -B '#${colors.c00.hex}A0' -w 1 -o)\"";
