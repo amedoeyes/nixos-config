@@ -41,7 +41,7 @@ in
       topiary
       ts_query_ls
       ty
-      typescript-go
+      typescript
       vscode-langservers-extracted
     ];
     settings = {

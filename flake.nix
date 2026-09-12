@@ -7,7 +7,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     mprisctl = {
-      url = "github:amedoeyes/mprisctl";
+      url = "git+https://git.eyoun.net/ahmed/mprisctl.git";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
