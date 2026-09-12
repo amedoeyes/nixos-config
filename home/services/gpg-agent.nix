@@ -8,7 +8,29 @@ let
   cfg = config.services.gpg-agent;
 in
 {
-  config.services.gpg-agent = lib.mkIf cfg.enable {
-    pinentry.package = pkgs.pinentry-tty;
+  options.services.gpg-agent.pam = lib.mkOption {
+    type = lib.types.submodule {
+      options = {
+        enable = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+        };
+        keys = lib.mkOption {
+          type = lib.types.listOf lib.types.str;
+          default = [ ];
+        };
+      };
+    };
+  };
+
+  config = lib.mkIf cfg.enable {
+    services.gpg-agent.pinentry.package = pkgs.pinentry-tty;
+
+    xdg.configFile."pam-gnupg" = lib.mkIf cfg.pam.enable {
+      text = ''
+        ${config.programs.gpg.homedir}
+        ${builtins.concatStringsSep "\n" cfg.pam.keys}
+      '';
+    };
   };
 }
