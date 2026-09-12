@@ -4,6 +4,6 @@ let
 in
 {
   config.programs.gpg = lib.mkIf cfg.enable {
-    homedir = "${config.xdg.dataHome}/gnupg";
+    homedir = lib.mkIf config.xdg.enable "${config.xdg.dataHome}/gnupg";
   };
 }
