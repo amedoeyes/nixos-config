@@ -1,5 +1,4 @@
 {
-  pkgs,
   lib,
   config,
   ...
@@ -9,7 +8,7 @@ let
 in
 {
   config.programs.fzf = lib.mkIf cfg.enable {
-    defaultCommand = "${lib.getExe pkgs.ripgrep} --files --hidden --follow";
+    historyWidget.command = "";
     defaultOptions = [
       "--no-info"
       "--no-separator"
@@ -19,38 +18,6 @@ in
       "--reverse"
       "--highlight-line"
       "--preview-border left"
-    ];
-    changeDirWidgetOptions = [
-      "--walker dir,follow,hidden"
-      "--walker-skip ${
-        lib.strings.concatStringsSep "," [
-          ".cache"
-          ".direnv"
-          ".git"
-          ".local/share/Smart\\ Code\\ ltd"
-          ".local/share/cargo"
-          ".local/share/containers"
-          ".local/share/docker"
-          ".local/share/ghcup"
-          ".local/share/go"
-          ".local/share/qutebrowser"
-          ".local/share/rustup"
-          ".local/share/xmake"
-          ".local/state/cabal"
-          ".local/state/home-manager"
-          ".local/state/nix"
-          ".ruff_cache"
-          "Trash"
-          "__pycache__"
-          "build"
-          "games"
-          "music"
-          "node_modules"
-          "old"
-          "target"
-          "venv"
-        ]
-      }"
     ];
     colors = with config.theme.colors; {
       "fg" = "#${c10.hex}";
