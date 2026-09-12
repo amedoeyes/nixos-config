@@ -29,7 +29,6 @@ in
         let
           modifier = cfg.config.modifier;
           scripts = import ./scripts pkgs;
-          fzfmenu = pkgs.fzfmenu.override { terminalOptions = [ "--app-id=fzfmenu" ]; };
         in
         with config.theme;
         {
@@ -117,8 +116,8 @@ in
           };
           keybindings = {
             "${modifier}+return" = "exec ${lib.getExe pkgs.${config.home.sessionVariables.TERMINAL}}";
-            "${modifier}+space" = "exec ${lib.getExe (scripts.launcher.override { inherit fzfmenu; })}";
-            "${modifier}+c" = "exec ${lib.getExe (scripts.clipboard.override { inherit fzfmenu; })}";
+            "${modifier}+space" = "exec ${lib.getExe scripts.launcher}";
+            "${modifier}+c" = "exec ${lib.getExe scripts.clipboard}";
             "print" = "exec ${lib.getExe pkgs.screenshot}";
             "shift+print" =
               "exec ${lib.getExe pkgs.screenshot} -g \"$(${lib.getExe pkgs.slurp} -b '#${colors.c00.hex}A0' -c '#${colors.c10.hex}FF' -s '#${colors.c00.hex}00' -B '#${colors.c00.hex}A0' -w 1 -o)\"";
@@ -214,7 +213,7 @@ in
               "${modifier}+escape" = "mode default";
             };
             NOTIFICATION = {
-              "${modifier}+m" = "exec ${lib.getExe' pkgs.mako "makoctl"} menu ${lib.getExe fzfmenu}";
+              "${modifier}+m" = "exec ${lib.getExe' pkgs.mako "makoctl"} menu ${lib.getExe pkgs.fzfmenu}";
               "${modifier}+d" = "exec ${lib.getExe' pkgs.mako "makoctl"} dismiss -a";
               "${modifier}+shift+d" = "exec ${lib.getExe' pkgs.mako "makoctl"} mode -t do-not-disturb";
 
