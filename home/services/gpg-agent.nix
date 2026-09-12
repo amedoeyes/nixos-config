@@ -24,7 +24,10 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    services.gpg-agent.pinentry.package = pkgs.pinentry-tty;
+    services.gpg-agent = {
+      pinentry.package = pkgs.pinentry-tty;
+      extraConfig = lib.mkIf cfg.pam.enable "allow-preset-passphrase";
+    };
 
     xdg.configFile."pam-gnupg" = lib.mkIf cfg.pam.enable {
       text = ''
