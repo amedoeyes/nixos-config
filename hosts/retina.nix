@@ -44,18 +44,7 @@
           ];
         };
         kernelModules = [ "kvm-intel" ];
-        loader = {
-          efi.canTouchEfiVariables = true;
-          systemd-boot = {
-            enable = true;
-            configurationLimit = 5;
-          };
-        };
         kernelPackages = pkgs.linuxPackages_zen;
-        tmp = {
-          cleanOnBoot = true;
-          useTmpfs = true;
-        };
       };
 
       fileSystems = {
@@ -105,22 +94,6 @@
         };
       };
 
-      nix = {
-        settings = {
-          use-xdg-base-directories = true;
-          experimental-features = [
-            "nix-command"
-            "flakes"
-            "pipe-operators"
-          ];
-        };
-        gc = {
-          automatic = true;
-          dates = "weekly";
-          options = "--delete-older-than 7d";
-        };
-      };
-
       environment.pathsToLink = [
         "/share/applications"
         "/share/xdg-desktop-portal"
@@ -128,40 +101,11 @@
 
       networking = {
         hostName = "retina";
-        useNetworkd = true;
-        firewall.enable = true;
-        nameservers = [ "9.9.9.9" ];
-        wireless = {
-          enable = true;
-          userControlled = true;
-          secretsFile = "/etc/nixos/wifi-passwords";
-          networks = {
-            "eyes" = {
-              pskRaw = "ext:eyes_psk";
-            };
-            "Iris" = {
-              hidden = true;
-              pskRaw = "ext:iris_psk";
-            };
-            "Fairy_Tale" = {
-              hidden = true;
-              pskRaw = "ext:Fairy_Tale_psk";
-            };
-            "TRUFLA_STAFF" = {
-              pskRaw = "ext:trufla_staff_psk";
-            };
-          };
-        };
+        wireless.enable = true;
       };
 
-      time.timeZone = "Africa/Cairo";
-
-      i18n.defaultLocale = "en_US.UTF-8";
-
       services = {
-        getty.extraArgs = [ "--noissue" ];
         libinput.enable = true;
-        openssh.enable = true;
         pipewire = {
           enable = true;
           pulse.enable = true;
@@ -179,7 +123,6 @@
             STOP_CHARGE_THRESH_BAT0 = 80;
           };
         };
-        udisks2.enable = true;
         xserver.videoDrivers = [
           "modesetting"
           "nvidia"
@@ -205,7 +148,6 @@
       ];
 
       programs = {
-        fish.enable = true;
         steam = {
           enable = true;
           extraCompatPackages = with pkgs; [ proton-ge-bin ];
@@ -213,10 +155,6 @@
         gamemode.enable = true;
       };
 
-      documentation = {
-        man.cache.enable = true;
-        dev.enable = true;
-      };
-
+      system.stateVersion = "26.05";
     };
 }

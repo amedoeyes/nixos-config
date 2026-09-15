@@ -16,15 +16,18 @@
           home =
             { pkgs, lib, ... }:
             {
-              home.packages = with pkgs; [
-                bc
-                file
-                nix-index
-                spell
-                wl-clipboard
-                xdg-utils
-                man-pages
-              ];
+              home = {
+                packages = with pkgs; [
+                  bc
+                  file
+                  nix-index
+                  spell
+                  wl-clipboard
+                  xdg-utils
+                  man-pages
+                ];
+                stateVersion = "26.05";
+              };
 
               xdg.portal.enable = lib.mkForce false;
 
@@ -68,31 +71,6 @@
 
       nixpkgs.hostPlatform = "x86_64-linux";
 
-      nix = {
-        settings = {
-          use-xdg-base-directories = true;
-          experimental-features = [
-            "nix-command"
-            "flakes"
-            "pipe-operators"
-          ];
-        };
-        gc = {
-          automatic = true;
-          dates = "weekly";
-          options = "--delete-older-than 7d";
-        };
-      };
-
-      programs = {
-        fish.enable = true;
-      };
-
-      documentation = {
-        man.cache.enable = true;
-        dev.enable = true;
-      };
-
       virtualisation.docker = {
         enable = true;
         rootless = {
@@ -100,5 +78,7 @@
           setSocketVariable = true;
         };
       };
+
+      system.stateVersion = "26.05";
     };
 }
