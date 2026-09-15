@@ -71,12 +71,6 @@
     };
   };
 
-  systemd = {
-    network = {
-      enable = lib.mkDefault true;
-    };
-  };
-
   programs = {
     fish.enable = lib.mkDefault true;
   };
