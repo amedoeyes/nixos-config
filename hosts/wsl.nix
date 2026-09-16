@@ -75,11 +75,17 @@
 
       networking.useNetworkd = false;
 
-      virtualisation.docker = {
-        enable = true;
-        rootless = {
+      services = {
+        smartd.enable = false;
+      };
+
+      virtualisation = {
+        containers.registries.search = [ "docker.io" ];
+        podman = {
           enable = true;
-          setSocketVariable = true;
+          dockerCompat = true;
+          dockerSocket.enable = true;
+          defaultNetwork.settings.dns_enabled = true;
         };
       };
 
