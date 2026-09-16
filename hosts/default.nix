@@ -78,6 +78,7 @@
   services = {
     getty.extraArgs = lib.mkDefault [ "--noissue" ];
     openssh.enable = lib.mkDefault true;
+    smartd.enable = lib.mkDefault true;
     udisks2.enable = lib.mkDefault true;
   };
 
