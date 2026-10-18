@@ -55,7 +55,7 @@
                 };
                 lazygit.enable = true;
                 ripgrep.enable = true;
-                yazi.enable = true;
+                vifm.enable = true;
                 zk.enable = true;
               };
             };

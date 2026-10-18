@@ -23,7 +23,6 @@
     ./swaylock.nix
     ./vifm.nix
     ./waybar.nix
-    ./yazi.nix
     ./zathura.nix
     ./zk.nix
     ./zsh.nix

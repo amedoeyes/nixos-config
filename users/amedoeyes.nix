@@ -266,7 +266,7 @@
         rmpc.enable = true;
         swaylock.enable = true;
         waybar.enable = true;
-        yazi = {
+        vifm = {
           enable = true;
           default = true;
           picker = true;

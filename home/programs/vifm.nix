@@ -137,7 +137,7 @@ in
         extraConfig =
           let
             options = ''
-              let &vicmd = "sh -c \'$EDITOR $1\'"
+              let &vicmd="sh -c '[ \"$0\" = -f ] && exec \"$EDITOR\" \"$1\" || exec \"$EDITOR\" \"$0\" \"$@\"'"
 
               set confirm=permdelete
               set dotdirs=""
@@ -219,39 +219,6 @@ in
 
                 fileviewer * ${getExe file} %c
               '';
-
-            icons = ''
-              set classify=""
-              set classify+=" :dir:, :exe:, :link:, :reg:, :block:, :char:, :fifo:, :sock:"
-            ''
-            + (
-              builtins.fetchurl {
-                url = "https://raw.githubusercontent.com/sxyazi/yazi/5ad1e003f2681a82d20f36db5e0835968b6baa71/yazi-config/preset/theme-light.toml";
-                sha256 = "18fljp6b0b7k84jllznqc0jb2x91qn7c6dfys4jb39f1z208ikw0";
-              }
-              |> builtins.readFile
-              |> fromTOML
-              |> (x: x.icon)
-              |> lib.filterAttrs (key: value: key != "conds" && key != "dirs")
-              |> builtins.mapAttrs (
-                key: value:
-                if key == "exts" then
-                  map (icon: {
-                    inherit (icon) text;
-                    name = "*." + icon.name;
-                  }) value
-                else
-                  value
-              )
-              |> builtins.attrValues
-              |> builtins.concatLists
-              |> builtins.groupBy (icon: icon.text)
-              |> builtins.mapAttrs (key: value: map (icon: icon.name) value)
-              |> lib.mapAttrsToList (
-                key: value: "set classify+=\"" + key + " ::" + (builtins.concatStringsSep ",," value) + "::\""
-              )
-              |> builtins.concatStringsSep "\n"
-            );
           in
           lib.mkMerge [
             options
@@ -259,7 +226,6 @@ in
             keybinds
             filetype
             fileviewer
-            icons
           ];
       };
     };
