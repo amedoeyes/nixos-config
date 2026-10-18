@@ -183,20 +183,23 @@
         };
       };
 
-      home.packages = with pkgs; [
-        bc
-        file
-        fzfmenu
-        man-pages
-        mprisctl
-        nix-index
-        ripdrag
-        screenrecord
-        screenshot
-        spell
-        wl-clipboard-rs
-        xdg-utils
-      ];
+      home = {
+        packages = with pkgs; [
+          bc
+          file
+          fzfmenu
+          man-pages
+          mprisctl
+          nix-index
+          ripdrag
+          screenrecord
+          screenshot
+          spell
+          wl-clipboard-rs
+          xdg-utils
+        ];
+        stateVersion = "26.05";
+      };
 
       programs = {
         aerc.enable = true;
