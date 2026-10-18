@@ -13,7 +13,6 @@ in
   config = lib.mkIf cfg.enable {
     home.sessionVariables = lib.mkIf cfg.default {
       TERMINAL = "foot";
-      TERMINAL_CLASS_OPTION = "--app-id";
     };
 
     programs.foot = {

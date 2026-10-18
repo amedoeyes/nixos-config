@@ -197,6 +197,7 @@
           spell
           wl-clipboard-rs
           xdg-utils
+          termrun
         ];
         stateVersion = "26.05";
       };

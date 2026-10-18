@@ -131,7 +131,8 @@
         "home-manager": "home-manager",
         "mprisctl": "mprisctl",
         "nixos-wsl": "nixos-wsl",
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": "nixpkgs_2",
+        "termrun": "termrun"
       }
     },
     "systems": {
@@ -147,6 +148,26 @@
         "owner": "nix-systems",
         "repo": "default",
         "type": "github"
+      }
+    },
+    "termrun": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1792353676,
+        "narHash": "sha256-sSwgevxj/WHZYKpxJu85urRcH2XjNmhtKc9pqvnNCvE=",
+        "ref": "refs/heads/master",
+        "rev": "c1c698abc88b505ea45ad9d82c13eeca6d87251f",
+        "revCount": 9,
+        "type": "git",
+        "url": "https://git.eyoun.net/ahmed/termrun.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://git.eyoun.net/ahmed/termrun.git"
       }
     }
   },

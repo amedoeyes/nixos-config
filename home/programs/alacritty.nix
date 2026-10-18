@@ -13,7 +13,6 @@ in
   config = lib.mkIf cfg.enable {
     home.sessionVariables = lib.mkIf cfg.default {
       TERMINAL = "alacritty";
-      TERMINAL_CLASS_OPTION = "--class";
     };
 
     programs.alacritty = {
