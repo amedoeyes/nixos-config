@@ -4,6 +4,7 @@
     enable = true;
     portal.enable = true;
     mimeApps.enable = true;
+    terminal-exec.enable = true;
     userDirs = {
       enable = true;
       setSessionVariables = true;
@@ -20,10 +21,6 @@
 
   home = {
     preferXdgDirectories = true;
-    packages = [
-      (pkgs.writeShellScriptBin "x-terminal-emulator" "exec $TERMINAL $@")
-      (pkgs.writeShellScriptBin "xdg-terminal-exec" "exec $TERMINAL $@")
-    ];
     sessionVariables = {
       CARGO_HOME = "${config.xdg.dataHome}/cargo";
       DOCKER_CONFIG = "${config.xdg.configHome}/docker";

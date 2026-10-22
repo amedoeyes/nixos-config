@@ -10,10 +10,6 @@
       url = "git+https://git.eyoun.net/ahmed/mprisctl.git";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    termrun = {
-      url = "git+https://git.eyoun.net/ahmed/termrun.git";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs =

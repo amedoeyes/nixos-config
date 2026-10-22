@@ -45,7 +45,7 @@ in
             ''
               [filechooser]
               env=PATH='${deps}/bin'
-              env=TERMCMD='${lib.getExe pkgs.${config.home.sessionVariables.TERMINAL}} --app-id=filepicker'
+              env=TERMCMD='${lib.getExe pkgs.xdg-terminal-exec} --app-id=filepicker'
               cmd=${pkgs.xdg-desktop-portal-termfilechooser}/share/xdg-desktop-portal-termfilechooser/vifm-wrapper.sh
             '';
         };
@@ -111,21 +111,21 @@ in
       qutebrowser.settings.fileselect = lib.mkIf cfg.picker {
         handler = "external";
         folder.command = [
-          config.home.sessionVariables.TERMINAL
+          (lib.getExe pkgs.xdg-terminal-exec)
           "--app-id=filepicker"
           "vifm"
           "-c only"
           "--choose-dir={}"
         ];
         single_file.command = [
-          config.home.sessionVariables.TERMINAL
+          (lib.getExe pkgs.xdg-terminal-exec)
           "--app-id=filepicker"
           "vifm"
           "-c only"
           "--choose-files={}"
         ];
         multiple_files.command = [
-          config.home.sessionVariables.TERMINAL
+          (lib.getExe pkgs.xdg-terminal-exec)
           "--app-id=filepicker"
           "vifm"
           "-c only"

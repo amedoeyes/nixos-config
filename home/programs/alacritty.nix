@@ -11,9 +11,7 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    home.sessionVariables = lib.mkIf cfg.default {
-      TERMINAL = "alacritty";
-    };
+    xdg.terminal-exec.settings.default = lib.mkIf cfg.default [ "alacritty.desktop" ];
 
     programs.alacritty = {
       settings = {

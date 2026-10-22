@@ -3,6 +3,7 @@
   lib,
   fzfmenu,
   dex,
+  xdg-terminal-exec,
 }:
 writeShellScriptBin "launcher" ''
   desktop_dirs=()
@@ -44,5 +45,5 @@ writeShellScriptBin "launcher" ''
 
   entry=$(printf "%s\n" "''${entries[@]}" | sort -t$'\t' -k1,1 -f -u | ${lib.getExe fzfmenu} -d '\\t' --with-nth=1..2 | cut -f3)
 
-  [[ -n "$entry" ]] && ${lib.getExe dex} "$entry"
+  [[ -n "$entry" ]] && ${lib.getExe dex} --term ${lib.getExe xdg-terminal-exec} "$entry"
 ''

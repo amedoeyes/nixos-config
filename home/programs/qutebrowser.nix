@@ -67,7 +67,7 @@ in
           default_size = "${toString size}pt";
         };
         editor.command = [
-          config.home.sessionVariables.TERMINAL
+          (lib.getExe pkgs.xdg-terminal-exec)
           config.home.sessionVariables.EDITOR
           "{}"
         ];

@@ -11,8 +11,25 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    home.sessionVariables = lib.mkIf cfg.default {
-      TERMINAL = "foot";
+
+    xdg = {
+      terminal-exec.settings.default = lib.mkIf cfg.default [ "foot.desktop" ];
+      desktopEntries.foot = {
+        name = "Foot";
+        genericName = "Terminal";
+        comment = "A wayland native terminal emulator";
+        exec = "foot";
+        icon = "foot";
+        terminal = false;
+        categories = [
+          "System"
+          "TerminalEmulator"
+        ];
+        settings = {
+          Keywords = "shell;prompt;command;commandline;";
+          X-TerminalArgAppId = "--app-id=";
+        };
+      };
     };
 
     programs.foot = {

@@ -90,20 +90,12 @@ in
             border = 1;
             commands = [
               {
-                criteria.app_id = "fzfmenu";
-                command = "floating enable";
-              }
-              {
-                criteria.app_id = "fzfmenu";
-                command = "focus";
-              }
-              {
                 criteria.app_id = "filepicker";
-                command = "floating enable";
+                command = "floating enable, focus";
               }
               {
-                criteria.app_id = "filepicker";
-                command = "focus";
+                criteria.app_id = "fzfmenu";
+                command = "floating enable, focus";
               }
             ];
           };
@@ -115,7 +107,7 @@ in
             inner = 10;
           };
           keybindings = {
-            "${modifier}+return" = "exec ${lib.getExe pkgs.${config.home.sessionVariables.TERMINAL}}";
+            "${modifier}+return" = "exec ${lib.getExe pkgs.xdg-terminal-exec}";
             "${modifier}+space" = "exec ${lib.getExe scripts.launcher}";
             "${modifier}+c" = "exec ${lib.getExe scripts.clipboard}";
             "${modifier}+p" = "exec ${lib.getExe scripts.password}";

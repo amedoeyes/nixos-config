@@ -6,7 +6,6 @@
   screenrecord = pkgs.callPackage ./screenrecord.nix { };
   screenshot = pkgs.callPackage ./screenshot.nix { };
   spell = pkgs.callPackage ./spell.nix { };
-  termrun = inputs.termrun.packages.${pkgs.stdenv.hostPlatform.system}.default;
   passExtensions = pkgs.passExtensions // {
     pass-meta = pkgs.callPackage ./pass-meta.nix { };
   };
