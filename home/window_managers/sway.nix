@@ -97,6 +97,10 @@ in
                 criteria.app_id = "fzfmenu";
                 command = "floating enable, focus";
               }
+              {
+                criteria.app_id = "pinentry-terminal";
+                command = "floating enable, focus, resize set width 500px height 150px";
+              }
             ];
           };
           floating = {

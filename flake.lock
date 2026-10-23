@@ -126,12 +126,33 @@
         "type": "github"
       }
     },
+    "pinentry-terminal": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1792734105,
+        "narHash": "sha256-lbvVatAhPa+Oeo23QO5zTuB0PHEJKoudm3PkRYg9rmU=",
+        "ref": "refs/heads/master",
+        "rev": "fb305fb2977128c56ff151f5c876d0f41d2065c8",
+        "revCount": 2,
+        "type": "git",
+        "url": "https://git.eyoun.net/ahmed/pinentry-terminal.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://git.eyoun.net/ahmed/pinentry-terminal.git"
+      }
+    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
         "mprisctl": "mprisctl",
         "nixos-wsl": "nixos-wsl",
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": "nixpkgs_2",
+        "pinentry-terminal": "pinentry-terminal"
       }
     },
     "systems": {

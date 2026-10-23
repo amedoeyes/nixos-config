@@ -10,6 +10,10 @@
       url = "git+https://git.eyoun.net/ahmed/mprisctl.git";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    pinentry-terminal = {
+      url = "git+https://git.eyoun.net/ahmed/pinentry-terminal.git";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
