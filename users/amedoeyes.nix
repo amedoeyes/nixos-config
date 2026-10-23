@@ -282,13 +282,6 @@
           enable = true;
           enableSshSupport = true;
           sshKeys = [ "854FFB39BA8E860C2AF77006410E69C81455868E" ];
-          pam = {
-            enable = true;
-            keys = [
-              "22BC4AC18F8D0A116FC1E9CBBA709D38031A9817"
-              "854FFB39BA8E860C2AF77006410E69C81455868E"
-            ];
-          };
         };
         mako.enable = true;
         swayidle.enable = true;
