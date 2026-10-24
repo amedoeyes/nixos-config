@@ -6,6 +6,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     mprisctl = {
       url = "git+https://git.eyoun.net/ahmed/mprisctl.git";
       inputs.nixpkgs.follows = "nixpkgs";
